@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace DotnetBank
 {
@@ -37,9 +38,10 @@ namespace DotnetBank
             else
             {
                 this.Saldo -= valorSaque;
-                return true;
+                Console.WriteLine();
                 Console.WriteLine($"Saldo atual da conta {this.Nome} é igual é: {this.Saldo}");
-            }            
+                return true;
+            }
         }
 
         public void Depositar(double valorDeposito)
@@ -53,7 +55,7 @@ namespace DotnetBank
         {
             if (this.Sacar(valorTransferencia))
             {
-                contaDestino.Depositar(valorTransferencia);
+                contaDestino.Depositar(valorTransferencia);               
             }
         }
 
@@ -61,13 +63,12 @@ namespace DotnetBank
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine("Tipo Conta: " + this.Saldo);
+            sb.AppendLine("Tipo Conta: " + this.TipoConta);
             sb.AppendLine("Nome: " + this.Nome);
             sb.AppendLine("Saldo: " + this.Saldo);
             sb.AppendLine("Credito: " + this.Credito);
 
-            return sb.ToString();                
+            return sb.ToString();
         }
-
     }
 }
